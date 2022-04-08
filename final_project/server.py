@@ -8,12 +8,20 @@ app = Flask("Web Translator")
 @app.route("/englishToFrench")
 def englishToFrench():
     textToTranslate = request.args.get('textToTranslate')
+    
+    if textToTranslate.isspace() or len(textToTranslate) == 0 or textToTranslate == None :
+        return "Type Something"
+    
     text_In_French = english_To_French(textToTranslate)
     return text_In_French
 
 @app.route("/frenchToEnglish")
 def frenchToEnglish():
     textToTranslate = request.args.get('textToTranslate')
+    
+    if textToTranslate.isspace() or len(textToTranslate) == 0 or textToTranslate == None :
+        return "Tape quelque chose"
+    
     text_In_English = french_to_english(textToTranslate)
     return text_In_English
 
