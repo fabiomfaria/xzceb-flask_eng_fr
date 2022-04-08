@@ -1,6 +1,6 @@
 from machinetranslation import translator
 from flask import Flask, render_template, request
-from translator import english_to_french, french_to_english
+from machinetranslation.translator import english_to_french, french_to_english
 import json
 
 app = Flask("Web Translator")
@@ -11,9 +11,9 @@ def englishToFrench():
     
     if textToTranslate.isspace() or len(textToTranslate) == 0 or textToTranslate == None :
         return "Type Something"
-    
-    translated_text = english_To_French(textToTranslate)
-    return translated_text
+    else:
+        translated_text = translator.english_to_french(textToTranslate)
+    return "Traduction: " + translated_text
 
 @app.route("/frenchToEnglish")
 def frenchToEnglish():
@@ -21,9 +21,9 @@ def frenchToEnglish():
     
     if textToTranslate.isspace() or len(textToTranslate) == 0 or textToTranslate == None :
         return "Tape quelque chose"
-    
-    translated_text = french_to_english(textToTranslate)
-    return translated_text
+    else:
+        translated_text = translator.french_to_english(textToTranslate)
+    return "Translated: " + translated_text
 
 @app.route("/")
 def renderIndexPage():
