@@ -12,8 +12,8 @@ def englishToFrench():
     if textToTranslate.isspace() or len(textToTranslate) == 0 or textToTranslate == None :
         return "Type Something"
     
-    text_In_French = english_To_French(textToTranslate)
-    return text_In_French
+    translated_text = english_To_French(textToTranslate)
+    return translated_text
 
 @app.route("/frenchToEnglish")
 def frenchToEnglish():
@@ -22,8 +22,8 @@ def frenchToEnglish():
     if textToTranslate.isspace() or len(textToTranslate) == 0 or textToTranslate == None :
         return "Tape quelque chose"
     
-    text_In_English = french_to_english(textToTranslate)
-    return text_In_English
+    translated_text = french_to_english(textToTranslate)
+    return translated_text
 
 @app.route("/")
 def renderIndexPage():
